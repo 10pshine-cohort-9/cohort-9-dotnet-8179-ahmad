@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="TrackingManagementSystem.Application/TrackingManagementSystem.Application.csproj" Id="0bcc9890-cd4a-4e9d-8965-a5998f95437f" />
+    <Project Path="TrackingManagementSystem.Domain/TrackingManagementSystem.Domain.csproj" Id="852ca684-8a2c-46db-b01e-234367f35b46" />
+    <Project Path="TrackingManagementSystem.Infrastructure/TrackingManagementSystem.Infrastructure.csproj" Id="54f822bd-c042-4b5c-8c70-930af8278ad0" />
+    <Project Path="TrackingManagementSystem.WebApi/TrackingManagementSystem.WebApi.csproj" Id="09505a7d-917a-4a35-9140-324116ad9398" />
+  </Folder>
+</Solution>
