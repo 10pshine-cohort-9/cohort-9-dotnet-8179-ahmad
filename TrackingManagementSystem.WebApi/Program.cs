@@ -21,15 +21,23 @@ if (string.IsNullOrWhiteSpace(defaultConnection))
         "Set ConnectionStrings:DefaultConnection in appsettings.json or environment.");
 }
 
-builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
+// DI
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+    options.UseSqlServer(defaultConnection));
 
-// Jwt settings
-builder.Services.Configure<JwtSettings>(builder.Configuration.GetSection("JwtSettings"));
+// Configure and validate JwtSettings via Options with startup validation
+builder.Services.AddOptions<JwtSettings>()
+    .Bind(builder.Configuration.GetSection("JwtSettings"))
+    .ValidateDataAnnotations()
+    .Validate(s => s.TokenLifetimeMinutes > 0 && s.RefreshTokenTTLInDays > 0, "Token lifetimes must be positive.")
+    .ValidateOnStart();
+
+// Bind now for immediate usage (and perform immediate validation to fail fast)
 var jwtSettings = builder.Configuration.GetSection("JwtSettings").Get<JwtSettings>() ?? new JwtSettings();
+
+// Manual validation using DataAnnotations to ensure invalid config fails early
+var validationContext = new System.ComponentModel.DataAnnotations.ValidationContext(jwtSettings);
+System.ComponentModel.DataAnnotations.Validator.ValidateObject(jwtSettings, validationContext, validateAllProperties: true);
 
 // DI
 builder.Services.AddScoped<IUserRepository, UserRepository>();
