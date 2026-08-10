@@ -21,9 +21,11 @@ if (string.IsNullOrWhiteSpace(defaultConnection))
         "Set ConnectionStrings:DefaultConnection in appsettings.json or environment.");
 }
 
-// DI
+builder.Services.AddControllers();
+// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlServer(defaultConnection));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 // Jwt settings
 builder.Services.Configure<JwtSettings>(builder.Configuration.GetSection("JwtSettings"));
