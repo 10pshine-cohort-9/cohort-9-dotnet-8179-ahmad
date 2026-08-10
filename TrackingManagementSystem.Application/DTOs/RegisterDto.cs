@@ -16,7 +16,7 @@ namespace TrackingManagementSystem.Application.DTOs
         [Required, MaxLength(100)]
         public string LastName { get; set; } = string.Empty;
 
-        [Required, EmailAddress]
+        [Required, EmailAddress, MaxLength(450)]
         public string Email { get; set; } = string.Empty;
 
         [Required, MinLength(6)]

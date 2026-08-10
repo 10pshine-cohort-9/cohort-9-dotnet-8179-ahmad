@@ -1,0 +1,14 @@
+placeholder// C#
+using System.ComponentModel.DataAnnotations;
+
+public class RegisterDto
+{
+    // ... other properties ...
+
+    [Required]
+    [EmailAddress]
+    [MaxLength(450)] // match SQL Server index-compatible length
+    public string Email { get; set; }
+
+    // ... other properties ...
+}
