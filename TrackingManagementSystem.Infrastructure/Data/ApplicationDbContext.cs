@@ -24,6 +24,11 @@ namespace TrackingManagementSystem.Infrastructure.Data
                 .HasIndex(u => u.Email)
                 .IsUnique();
 
+            // Primary keys (property names don't match EF conventions because of pluralized class names)
+            modelBuilder.Entity<Users>().HasKey(u => u.UserId);
+            modelBuilder.Entity<TaskItem>().HasKey(t => t.TaskId);
+            modelBuilder.Entity<Categorys>().HasKey(c => c.CategoryId);
+
             // TaskItem -> CreatedByUser (Restrict delete)
             modelBuilder.Entity<TaskItem>()
                 .HasOne(t => t.CreatedByUser)
