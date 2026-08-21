@@ -15,6 +15,6 @@ namespace TaskManagement.API.Domain.Entities
         public bool IsDeleted { get; set; } = false;
         public DateTime? DeletedAt { get; set; }
         public Guid UserId { get; set; }
-        public User User { get; set; } = null!;
+        public Users User { get; set; } = null!;
     }
 }

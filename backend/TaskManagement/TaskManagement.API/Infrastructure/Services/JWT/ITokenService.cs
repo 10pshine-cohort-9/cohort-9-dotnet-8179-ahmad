@@ -4,7 +4,7 @@ namespace TaskManagement.API.Infrastructure.Services.JWT
 {
     public interface ITokenService
     {
-        string GenerateToken(User user);
+        string GenerateToken(Users user);
         string GenerateRefreshToken();
     }
 }

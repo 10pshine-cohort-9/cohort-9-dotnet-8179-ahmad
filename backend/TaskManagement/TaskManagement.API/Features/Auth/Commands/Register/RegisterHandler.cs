@@ -16,7 +16,7 @@ namespace TaskManagement.API.Features.Auth.Commands.Register
             if (emailExists)
                 throw new ValidationException(new List<string> { "Email already exists" });
 
-            var user = new User
+            var user = new Domain.Entities.Users
             {
                 FullName = command.FullName,
                 Email = command.Email,
