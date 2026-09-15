@@ -9,7 +9,7 @@ namespace TaskManagement.API.Infrastructure.Persistence.Data
         {
         }
 
-        public DbSet<User> Users { get; set; }
+        public DbSet<Users> Users { get; set; }
         public DbSet<TaskItem> Tasks { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

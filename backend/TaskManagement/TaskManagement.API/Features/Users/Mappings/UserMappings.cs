@@ -4,7 +4,7 @@ namespace TaskManagement.API.Features.Users.Mappings
 {
     public static class UserMappings
     {
-        public static UserDto ToDto(this User user)
+        public static UserDto ToDto(this Domain.Entities.Users user)
         {
             return new UserDto
             {

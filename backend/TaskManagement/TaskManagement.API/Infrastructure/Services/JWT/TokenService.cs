@@ -12,7 +12,7 @@ namespace TaskManagement.API.Infrastructure.Services.JWT
     {
         private readonly JwtSettings _jwtSettings = jwtSettings.Value;
 
-        public string GenerateToken(User user)
+        public string GenerateToken(Users user)
         {
             var claims = new List<Claim>
             {
